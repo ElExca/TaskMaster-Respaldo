@@ -1,37 +1,27 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Stack } from 'expo-router';
+import AppProviders from '@/presentation/providers/AppProviders';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const Layout: React.FC = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+    <AppProviders>
+    <Stack>
+      <Stack.Screen name="login" options={{ headerShown: false }} />
+      <Stack.Screen name="register" options={{ headerShown: false }} />
+      <Stack.Screen name="home" options={{ headerShown: false }} />
+      <Stack.Screen name="alltasks" options={{ headerShown: false }} />
+      <Stack.Screen name="createtask" options={{ headerShown: false }} />
+      <Stack.Screen name="completedTasks" options={{ headerShown: false }} />
+      <Stack.Screen name="notStartedTasks" options={{ headerShown: false }} />
+      <Stack.Screen name="inProgressTasks" options={{ headerShown: false }} />
+      <Stack.Screen name="categoryTasks" options={{ headerShown: false }} />
+      <Stack.Screen name="taskDetail" options={{ headerShown: false }} />
+      <Stack.Screen name="editTask" options={{ headerShown: false }} />
+    </Stack>
+    </AppProviders>
   );
-}
+};
+
+export default Layout;
+
+
